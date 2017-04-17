@@ -1,0 +1,55 @@
+{
+    "users": [
+        {
+            "_id": {
+                "$oid": "58ebff810012ff1c85fa1905"
+            },
+            "username": "user@gmail.com",
+            "password": "pass",
+            "name": "user"
+        },
+        {
+            "_id": {
+                "$oid": "58ebff810012ff1c85fa1906"
+            },
+            "username": "user2@gmail.com",
+            "password": "pass",
+            "name": "user2"
+        },
+        {
+            "username": "user3@gmail.com",
+            "password": "pass",
+            "name": "user3"
+        }
+    ],
+    "access_tokens": [
+        {
+            "accessToken": "APP_TOKEN",
+            "userId": {
+                "$oid": "58ebff810012ff1c85fa1905"
+            },
+            "userRole": "app"
+        },
+        {
+            "accessToken": "USER_TOKEN",
+            "userId": {
+                "$oid": "58ebff810012ff1c85fa1905"
+            },
+            "userRole": "default"
+        },
+        {
+            "accessToken": "USER2_TOKEN",
+            "userId": {
+                "$oid": "58ebff810012ff1c85fa1906"
+            },
+            "userRole": "default"
+        },
+        {
+            "accessToken": "ADMIN_TOKEN",
+            "userId": {
+                "$oid": "58ebff810012ff1c85fa1905"
+            },
+            "userRole": "admin"
+        }
+    ]
+}

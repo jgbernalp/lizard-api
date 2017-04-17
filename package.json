@@ -1,11 +1,35 @@
 {
   "name": "lizard-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "start": "node ./bin/www",
     "test": "_mocha $(find test -name *-test.js)",
     "cover": "node_modules/.bin/istanbul cover _mocha $(find test -name *-test.js)"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgbernalp/lizard-api"
+  },
+  "bugs": {
+    "url": "https://github.com/jgbernalp/lizard-api/issues"
+  },
+  "author": {
+    "name": "Gabriel Bernal",
+    "email": "gabrielbernalp@gmail.com"
+  },
+  "engines": {
+    "node": ">=6.9.4"
+  },
+  "keywords": [
+    "nodejs",
+    "api",
+    "rest",
+    "restful",
+    "mysql",
+    "mongo",
+    "mongodb"
+  ],
+  "license": "MIT",
   "dependencies": {
     "acl": "^0.4.10",
     "auth-header": "^0.3.1",

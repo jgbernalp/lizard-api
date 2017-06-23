@@ -13,7 +13,7 @@ function insertCollection(modelName, data, Model) {
     return new Promise((resolve, reject) => {
         // Clear existing collection
 
-        Model.remove().then(() => {
+        Model.remove({}).then(() => {
             var promises = [];
 
             // Insert each item individually so we get Mongoose validation etc.

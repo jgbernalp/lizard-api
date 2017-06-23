@@ -18,9 +18,11 @@ storageClient.connectEnvironment(env);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json({limit: '5mb'}));
-app.use(bodyParser.urlencoded({extended: false}));
+if (env != 'test') {
+    app.use(logger('dev'));
+}
+app.use(bodyParser.json({ limit: '5mb' }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(compression());
 app.use(express.static(path.join(__dirname, 'front-end', 'dist')));
@@ -47,6 +49,10 @@ app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     const onDevelopment = req.app.get('env') === 'development';
 
+    if (onDevelopment) {
+        console.log(err);
+    }
+
     res.locals.message = err.message;
     res.locals.error = onDevelopment ? err : {};
 
@@ -54,13 +60,14 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
 
     let errorObject;
+
     if (err && typeof err.toJSON == 'function') {
         errorObject = err.toJSON(onDevelopment);
     } else {
         errorObject = err;
     }
 
-    res.json({error: errorObject});
+    res.json({ error: errorObject });
 });
 
 module.exports = app;

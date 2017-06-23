@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "scripts": {
     "start": "node ./bin/www",
-    "test": "_mocha $(find test -name *-test.js)",
+    "test": "export NODE_ENV=test;_mocha $(find test -name *-test.js)",
     "cover": "node_modules/.bin/istanbul cover _mocha $(find test -name *-test.js)"
   },
   "repository": {
@@ -39,10 +39,11 @@
     "cors": "^2.8.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "mailgun-js": "^0.11.2",
     "morgan": "~1.8.1",
     "pug": "~2.0.0-beta11",
     "serve-favicon": "~2.4.2",
-    "turtle-orm": "^1.0.9"
+    "turtle-orm": "^1.0.12"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -52,5 +53,6 @@
     "mongodb-extended-json": "^1.9.0",
     "sinon": "^2.1.0",
     "supertest": "^3.0.0"
-  }
+  },
+  "false": {}
 }

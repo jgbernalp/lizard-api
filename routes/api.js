@@ -1,10 +1,10 @@
 module.exports = function (app) {
-  app.use('/v1/users', function (req, res, next) {
+  app.use('/api/v1/users', function (req, res, next) {
     req.resource = 'users';
     next();
-  }, require('../lib/controllers/users.controller').router);
+  }, require('../lib/controllers/users-controller').router);
 
-  app.use('/*', function (req, res) {
+  app.use('/api/*', function (req, res) {
     res.status(404).json({
       message: 'Invalid Path'
     });

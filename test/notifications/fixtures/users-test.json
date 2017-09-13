@@ -25,31 +25,47 @@
     "access_tokens": [
         {
             "accessToken": "APP_TOKEN",
-            "userId": {
+            "identityId": {
                 "$oid": "58ebff810012ff1c85fa1905"
             },
-            "userRole": "app"
+            "identityRole": "apps",
+            "identityType": "apps",
+            "clientId": {
+                "$oid": "58ebff810012ff1c85fa1900"
+            }
         },
         {
             "accessToken": "USER_TOKEN",
-            "userId": {
+            "identityId": {
                 "$oid": "58ebff810012ff1c85fa1905"
             },
-            "userRole": "default"
+            "identityRole": "default",
+            "identityType": "users",
+            "clientId": {
+                "$oid": "58ebff810012ff1c85fa1900"
+            }
         },
         {
             "accessToken": "USER2_TOKEN",
-            "userId": {
+            "identityId": {
                 "$oid": "58ebff810012ff1c85fa1906"
             },
-            "userRole": "default"
+            "identityRole": "default",
+            "identityType": "users",
+            "clientId": {
+                "$oid": "58ebff810012ff1c85fa1900"
+            }
         },
         {
             "accessToken": "ADMIN_TOKEN",
-            "userId": {
+            "identityId": {
                 "$oid": "58ebff810012ff1c85fa1905"
             },
-            "userRole": "admin"
+            "identityRole": "admin",
+            "identityType": "users",
+            "clientId": {
+                "$oid": "58ebff810012ff1c85fa1900"
+            }
         }
     ]
 }

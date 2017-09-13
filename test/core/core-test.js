@@ -1,4 +1,4 @@
-process.env.NODE_ENV = 'test';
+process.env.ENVIRONMENT = 'test';
 
 const request = require('supertest');
 const expect = require('chai').expect;
@@ -86,6 +86,24 @@ describe('Core', function () {
 
                 expect(err).to.be.a('null');
                 expect(res.status).to.equal(401);
+
+                done();
+            });
+    });
+
+    it('should handle invalid paths', (done) => {
+        request(app)
+            .post('/api/v1/users/something/non/existent')
+            .send({
+                username: 'user@gmail.com',
+                password: 'pass',
+                access_token: { invalid: true }
+            })
+            .end(function (err, res) {
+                // console.log(res.toJSON());
+
+                expect(err).to.be.a('null');
+                expect(res.status).to.equal(404);
 
                 done();
             });

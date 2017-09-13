@@ -14,6 +14,8 @@ let app = express();
 
 var env = process.env.ENVIRONMENT || app.get('env');
 
+console.log('Environment: ' + env);
+
 storageClient.connectEnvironment(env);
 
 // uncomment after placing your favicon in /public
@@ -47,11 +49,7 @@ app.use(function (req, res, next) {
 // error handler
 app.use(function (err, req, res, next) {
     // set locals, only providing error in development
-    const onDevelopment = req.app.get('env') === 'development';
-
-    if (onDevelopment) {
-        console.log(err);
-    }
+    const onDevelopment = env === 'development' || env === 'test';
 
     res.locals.message = err.message;
     res.locals.error = onDevelopment ? err : {};
@@ -65,6 +63,10 @@ app.use(function (err, req, res, next) {
         errorObject = err.toJSON(onDevelopment);
     } else {
         errorObject = err;
+    }
+
+    if (onDevelopment && (err.status == 500 || err.status == undefined)) {
+        console.error({ time: new Date(), error: errorObject });
     }
 
     res.json({ error: errorObject });

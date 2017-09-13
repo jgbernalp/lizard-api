@@ -6,6 +6,7 @@ const expect = require('chai').expect;
 const Sinon = require('sinon');
 const Users = require('../../lib/models/users');
 const Crypt = require('../../lib/crypt');
+const NotificationsManager = require('../../lib/notifications-manager');
 
 require('mocha-sinon');
 
@@ -13,7 +14,7 @@ const fixtures = require('./../fixtures');
 
 const app = require('../../app');
 
-describe('Users CRUD & Login', function () {
+describe('Users CRUD', function () {
     beforeEach((done) => {
         this.sinon = Sinon.sandbox.create();
         fixtures.loadFixtures(__filename).then(() => done());
@@ -27,33 +28,24 @@ describe('Users CRUD & Login', function () {
         fixtures.clearFixtures().then(() => done());
     });
 
-    it('should login a user', (done) => {
+    it('should register a user', (done) => {
+        // Mock email sending
+        this.sinon.stub(NotificationsManager, 'sendNotification').callsFake((params) => {
+            expect(params.type).to.equal('email');
+            expect(params.template).to.equal('registration');
+            expect(params.data.userName).to.equal('Jhon');
+            expect(params.subject).to.equal('Welcome Jhon');
+
+            return Promise.resolve();
+        });
+
         request(app)
-            .post('/api/v1/users/login')
-            .send({
-                username: 'user@gmail.com',
-                password: 'pass'
-            })
-            .end(function (err, res) {
-                // console.log(res.toJSON());
-
-                expect(err).to.be.a('null');
-                expect(res.status).to.equal(200);
-
-                expect(res.body.data.user).to.be.an('object');
-                expect(res.body.data.access_token).to.be.a('string');
-
-                done();
-            });
-    });
-
-    it('should create a user', (done) => {
-        request(app)
-            .post('/api/v1/users')
+            .post('/api/v1/users/register')
             .set('Authorization', 'Bearer APP_TOKEN')
             .send({
                 username: 'user@gmail.com',
-                password: 'pass'
+                password: 'pass',
+                name: 'Jhon'
             })
             .end(function (err, res) {
                 // console.log(res.toJSON());
@@ -62,8 +54,9 @@ describe('Users CRUD & Login', function () {
                 expect(res.status).to.equal(200);
 
                 expect(res.body.data).to.be.an('object');
-                expect(res.body.data.username).to.equal('user@gmail.com');
-                expect(res.body.data.password).to.be.an('undefined');
+                expect(res.body.access_token).to.be.a('string');
+                expect(res.body.data.identity.username).to.equal('user@gmail.com');
+                expect(res.body.data.identity.password).to.be.an('undefined');
 
                 done();
             });
@@ -102,7 +95,7 @@ describe('Users CRUD & Login', function () {
                 expect(res.status).to.equal(200);
 
                 expect(res.body.data).to.be.an('object');
-                expect(res.body.data.name).to.equal('user');
+                expect(res.body.data.name).to.equal('Jhon');
                 expect(res.body.data.username).to.equal('user@gmail.com');
                 expect(res.body.data.password).to.be.an('undefined');
 
@@ -121,7 +114,7 @@ describe('Users CRUD & Login', function () {
                 expect(res.status).to.equal(200);
 
                 expect(res.body.data).to.be.an('array');
-                expect(res.body.data[0].name).to.equal('user');
+                expect(res.body.data[0].name).to.equal('Jhon');
                 expect(res.body.data[0].username).to.equal('user@gmail.com');
                 expect(res.body.data[1].username).to.equal('user2@gmail.com');
                 expect(res.body.data[2].username).to.equal('user3@gmail.com');

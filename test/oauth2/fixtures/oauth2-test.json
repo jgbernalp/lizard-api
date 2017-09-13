@@ -1,4 +1,27 @@
 {
+    "users": [
+        {
+            "_id": {
+                "$oid": "58ebff810012ff1c85fa1905"
+            },
+            "username": "user@gmail.com",
+            "password": "pass",
+            "name": "user"
+        },
+        {
+            "_id": {
+                "$oid": "58ebff810012ff1c85fa1906"
+            },
+            "username": "user2@gmail.com",
+            "password": "pass1",
+            "name": "user2"
+        },
+        {
+            "username": "user3@gmail.com",
+            "password": "pass2",
+            "name": "user3"
+        }
+    ],
     "apps": [
         {
             "_id": {
@@ -8,34 +31,11 @@
             "name": "web"
         }
     ],
-    "users": [
-        {
-            "_id": {
-                "$oid": "58ebff810012ff1c85fa1905"
-            },
-            "username": "user@gmail.com",
-            "password": "pass",
-            "name": "Jhon"
-        },
-        {
-            "_id": {
-                "$oid": "58ebff810012ff1c85fa1906"
-            },
-            "username": "user2@gmail.com",
-            "password": "pass",
-            "name": "user2"
-        },
-        {
-            "username": "user3@gmail.com",
-            "password": "pass",
-            "name": "user3"
-        }
-    ],
     "access_tokens": [
         {
             "accessToken": "APP_TOKEN",
             "identityId": {
-                "$oid": "58ebff810012ff1c85fa1905"
+                "$oid": "58ebff810012ff1c85fa1900"
             },
             "identityRole": "apps",
             "identityType": "apps",
@@ -51,7 +51,7 @@
             "identityRole": "default",
             "identityType": "users",
             "clientId": {
-                "$oid": "58ebff810012ff1c85fa1900"
+                "$oid": "58ebff810012ff1c85fa1905"
             }
         },
         {
@@ -62,7 +62,7 @@
             "identityRole": "default",
             "identityType": "users",
             "clientId": {
-                "$oid": "58ebff810012ff1c85fa1900"
+                "$oid": "58ebff810012ff1c85fa1905"
             }
         },
         {
@@ -73,7 +73,7 @@
             "identityRole": "admin",
             "identityType": "users",
             "clientId": {
-                "$oid": "58ebff810012ff1c85fa1900"
+                "$oid": "58ebff810012ff1c85fa1905"
             }
         }
     ]

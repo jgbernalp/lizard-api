@@ -5,20 +5,28 @@
                 "$oid": "58ebff810012ff1c85fa1900"
             },
             "accessToken": "OLD_TOKEN",
-            "userId": {
+            "identityId": {
                 "$oid": "58ebff810012ff1c85fa1905"
             },
-            "userRole": "app",
+            "identityRole": "default",
+            "identityType": "users",
             "expiresAt": {
                 "$date": "2012-07-14T01:00:00+01:00"
+            },
+            "clientId": {
+                "$oid": "58ebff810012ff1c85fa1900"
             }
         },
         {
             "accessToken": "USER_TOKEN",
-            "userId": {
+            "identityId": {
                 "$oid": "58ebff810012ff1c85fa1905"
             },
-            "userRole": "default"
+            "identityRole": "default",
+            "identityType": "users",
+            "clientId": {
+                "$oid": "58ebff810012ff1c85fa1900"
+            }
         }
     ]
 }
